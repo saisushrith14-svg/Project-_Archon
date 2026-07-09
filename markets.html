@@ -86,16 +86,22 @@
       </div>
 
       <!-- Categories -->
+      <input type="radio" name="market-filter" id="filter-all" class="market-filter-input" checked>
+      <input type="radio" name="market-filter" id="filter-crypto" class="market-filter-input">
+      <input type="radio" name="market-filter" id="filter-forex" class="market-filter-input">
+      <input type="radio" name="market-filter" id="filter-stocks" class="market-filter-input">
+      <input type="radio" name="market-filter" id="filter-commodities" class="market-filter-input">
+
       <div class="category-tabs">
-        <div class="category-tab active"><i class="fa-solid fa-layer-group"></i> All Markets</div>
-        <div class="category-tab"><i class="fa-brands fa-bitcoin"></i> Crypto</div>
-        <div class="category-tab"><i class="fa-solid fa-money-bill-trend-up"></i> Forex</div>
-        <div class="category-tab"><i class="fa-solid fa-chart-simple"></i> Stocks</div>
-        <div class="category-tab"><i class="fa-solid fa-gem"></i> Commodities</div>
+        <label for="filter-all" class="category-tab"><i class="fa-solid fa-layer-group"></i> All Markets</label>
+        <label for="filter-crypto" class="category-tab"><i class="fa-brands fa-bitcoin"></i> Crypto</label>
+        <label for="filter-forex" class="category-tab"><i class="fa-solid fa-money-bill-trend-up"></i> Forex</label>
+        <label for="filter-stocks" class="category-tab"><i class="fa-solid fa-chart-simple"></i> Stocks</label>
+        <label for="filter-commodities" class="category-tab"><i class="fa-solid fa-gem"></i> Commodities</label>
       </div>
 
       <!-- Crypto Section -->
-      <div class="market-section">
+      <div class="market-section category-crypto">
         <h2 class="market-section__title">
           <div class="market-section__icon icon-frame icon-frame-primary"><i class="fa-brands fa-bitcoin"></i></div>
           Cryptocurrency
@@ -193,7 +199,7 @@
       </div>
 
       <!-- Forex Section -->
-      <div class="market-section">
+      <div class="market-section category-forex">
         <h2 class="market-section__title">
           <div class="market-section__icon icon-frame icon-frame-secondary"><i class="fa-solid fa-money-bill-trend-up"></i></div>
           Forex
