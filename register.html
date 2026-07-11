@@ -51,45 +51,43 @@
         <p>Set up your free Archon account in seconds</p>
       </div>
       
-      <form class="auth-form">
+      <form class="auth-form" id="registrationForm">
         <div class="auth-form-row">
           <div class="form-group">
             <label class="form-label">First Name</label>
-            <input type="text" class="form-input" placeholder="John">
+            <input type="text" id="firstName" class="form-input" placeholder="John" required>
           </div>
           <div class="form-group">
             <label class="form-label">Last Name</label>
-            <input type="text" class="form-input" placeholder="Doe">
+            <input type="text" id="lastName" class="form-input" placeholder="Doe" required>
           </div>
         </div>
         
         <div class="form-group">
           <label class="form-label">Email Address</label>
-          <input type="email" class="form-input" placeholder="name@example.com">
+          <input type="email" id="email" class="form-input" placeholder="name@example.com" required>
         </div>
         
         <div class="form-group">
           <label class="form-label">Password</label>
           <div class="input-icon-wrap">
-            <input type="password" class="form-input" placeholder="••••••••">
-            <i class="fa-regular fa-eye"></i>
+            <input
+            id="password"
+            type="password"
+            class="form-input"
+            placeholder="********"
+            required> 
+          <i class="fa-regular fa-eye" id="togglePassword" style="cursor: pointer;"></i>
           </div>
         </div>
         
         <label class="auth-checkbox" style="align-items: flex-start; margin-top: var(--space-2);">
-          <input type="checkbox" style="margin-top: 4px;">
+          <input type="checkbox" id="termsCheckbox" style="margin-top: 4px;" required>
           <span class="text-xs leading-relaxed">I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a>, and confirm I am over 18 years old.</span>
         </label>
         
-        <button type="button" class="btn btn-primary btn-lg" style="margin-top: var(--space-4);">Create Account</button>
+        <button type="submit" class="btn btn-primary btn-lg" style="margin-top: var(--space-4);">Create Account</button>
       </form>
-      
-      <div class="auth-divider">or sign up with</div>
-      
-      <div class="auth-social">
-        <button class="btn btn-ghost"><i class="fa-brands fa-google"></i> Google</button>
-        <button class="btn btn-ghost"><i class="fa-brands fa-apple"></i> Apple</button>
-      </div>
       
       <p class="text-center text-sm text-secondary mt-6">
         Already have an account? <a href="login.html" class="auth-link">Log in</a>
@@ -97,6 +95,53 @@
     </div>
 
   </div>
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Keeps the page from refreshing automatically
 
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const termsAccepted = document.getElementById('termsCheckbox').checked;
+
+  // Browser safety fallback validation
+  if (!firstName || !lastName || !email || !password || !termsAccepted) {
+    alert('Please fill out all required fields.');
+    return;
+  }
+
+  console.log('Form submission payload:', { firstName, lastName, email });
+
+  // 1. SIMULATE AUTO-LOGIN
+  // Store a session flag so dashboard.html knows the user is authenticated
+  localStorage.setItem('isLoggedIn', 'true');
+  localStorage.setItem('userEmail', email);
+
+  // 2. CLEAR THE FORM
+  // This resets all text boxes and checkboxes back to empty instantly
+  this.reset(); 
+
+  alert('Success! Registration data captured. Redirecting to dashboard...');
+
+  // 3. AUTO LOGIN REDIRECT
+  // Send the user directly to your dashboard.html file
+  window.location.href = 'dashboard.html';
+});
+
+    // Password Eye Toggle Feature
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+      const isPasswordType = passwordInput.getAttribute('type') === 'password';
+      passwordInput.setAttribute('type', isPasswordType ? 'text' : 'password');
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+  </script>
+
+
+<script src="script.js"></script>
 </body>
 </html>

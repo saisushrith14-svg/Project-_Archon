@@ -14,12 +14,13 @@
 </head>
 <body class="auth-page">
 
-  <div class="auth-container">
+  <div class="overlay">
+    <div class="auth-container">
     
     <!-- Info Side -->
     <div class="auth-info">
       <a href="index.html" class="auth-logo">
-        <div class="auth-logo-icon">A</div>
+        <div class="auth-logo-icon">A</div> 
         <div class="auth-logo-text">Archon</div>
       </a>
       
@@ -55,9 +56,14 @@
         
         <div class="form-group">
           <label class="form-label">Password</label>
-          <div class="input-icon-wrap">
-            <input type="password" class="form-input" placeholder="••••••••">
-            <i class="fa-regular fa-eye"></i>
+         <div class="input-icon-wrap">
+    <input
+        type="password"
+        id="password"
+        class="form-input"
+        placeholder="••••••••"
+    >
+    <i class="fa-regular fa-eye" id="togglePassword"></i>
           </div>
         </div>
         
@@ -71,19 +77,29 @@
         <button type="button" class="btn btn-primary btn-lg" style="margin-top: var(--space-4);">Log In</button>
       </form>
       
-      <div class="auth-divider">or continue with</div>
-      
-      <div class="auth-social">
-        <button class="btn btn-ghost"><i class="fa-brands fa-google"></i> Google</button>
-        <button class="btn btn-ghost"><i class="fa-brands fa-apple"></i> Apple</button>
-      </div>
-      
       <p class="text-center text-sm text-secondary mt-8">
         Don't have an account? <a href="register.html" class="auth-link">Sign up</a>
       </p>
     </div>
 
   </div>
+<script>
+const password = document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
 
+toggle.addEventListener("click", function () {
+    if (password.type === "password") {
+        password.type = "text";
+        toggle.classList.remove("fa-eye");
+        toggle.classList.add("fa-eye-slash");
+    } else {
+        password.type = "password";
+        toggle.classList.remove("fa-eye-slash");
+        toggle.classList.add("fa-eye");
+    }
+});
+</script>
+  </div>
+<script src="script.js"></script>
 </body>
 </html>
